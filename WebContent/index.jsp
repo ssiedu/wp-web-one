@@ -1,6 +1,11 @@
+<%
+	
+	session.setMaxInactiveInterval(1500);
+%>
 <html>
 <body>
-	<h1>My First Web Application</h1>
+	<h3>Welcome User</h3>
+	<h3>My First Web Application</h3>
 	<hr>
 		<a href="PriceListServlet">View-Price-List</a><br>
 		<a href="details.jsp">Know-Your-Tax-Liability</a><br>
