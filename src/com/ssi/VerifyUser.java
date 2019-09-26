@@ -8,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/VerifyUser")
 public class VerifyUser extends HttpServlet {
@@ -16,6 +17,12 @@ public class VerifyUser extends HttpServlet {
 		String userid=request.getParameter("userid");
 		String password=request.getParameter("password");
 		if(userid.equals("aaa") && password.equals("bbb")) {
+	
+			//storing userid to session
+			//step-1 (fetfch the session created for this user)
+			HttpSession session=request.getSession();
+			//step-2 (store the value in session object)
+			session.setAttribute("userid", userid);
 			
 			String choice=request.getParameter("save");
 			if(choice!=null) {

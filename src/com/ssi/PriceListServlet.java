@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class PriceListServlet
@@ -48,18 +49,34 @@ public class PriceListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//reading userid from session
+		//step-1 (fetch the session object created for this user)
+		HttpSession session=request.getSession();
+		
+		//step-2 (read the value from session object)
+		String userid=(String) session.getAttribute("userid");
+		
+		if(userid==null) {
+			response.sendRedirect("login.jsp");
+		}
+		
+		
+		
 		PrintWriter out = response.getWriter();
-
+		out.println("<html>");
+		out.println("<body>");
+		out.println("<h3>Welcome "+userid+"</h3>");
 		try {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				out.println(rs.getString(1) + "," + rs.getString(2));
+				out.println(rs.getString(1) + "," + rs.getString(2)+"<br>");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		out.println("</body></html>");
 	}
 
 }

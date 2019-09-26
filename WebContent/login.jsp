@@ -1,8 +1,8 @@
 <%
-	long inactiveInterval=session.getMaxInactiveInterval();
+	//long inactiveInterval=session.getMaxInactiveInterval();
 
-	long creationTime=session.getCreationTime();
-	java.util.Date dt=new java.util.Date(creationTime);
+	//long creationTime=session.getCreationTime();
+	//java.util.Date dt=new java.util.Date(creationTime);
 
 
 	//step-1 (fetch all the cookies coming with request)
@@ -22,10 +22,11 @@
 		}
 
 %>
-<%=inactiveInterval %>
+<%-- <%=inactiveInterval %>
 <%=creationTime%>
 <%=dt%>
-<html>
+ --%>
+ <html>
 <body>
 	<form action="VerifyUser">
 		<pre>

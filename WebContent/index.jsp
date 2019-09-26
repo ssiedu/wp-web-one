@@ -1,10 +1,14 @@
 <%
 	
-	session.setMaxInactiveInterval(1500);
+	String userid=(String)session.getAttribute("userid");
+	if(userid==null){
+		response.sendRedirect("login.jsp");
+	}
+	//session.setMaxInactiveInterval(1500);
 %>
 <html>
 <body>
-	<h3>Welcome User</h3>
+	<h3>Welcome <%=userid%></h3>
 	<h3>My First Web Application</h3>
 	<hr>
 		<a href="PriceListServlet">View-Price-List</a><br>
