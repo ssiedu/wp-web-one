@@ -1,5 +1,9 @@
+
+<jsp:include page="info.jsp"/>
+
 <%
-	
+	int x;
+	//public int y;
 	String userid=(String)session.getAttribute("userid");
 	if(userid==null){
 		response.sendRedirect("login.jsp");
@@ -11,6 +15,8 @@
 	<h3>Welcome <%=userid%></h3>
 	<h3>My First Web Application</h3>
 	<hr>
+		<a href="inputs.jsp">Tax-Calc</a><br>
+		<a href="allproducts.jsp">View-All-Products</a><br>
 		<a href="PriceListServlet">View-Price-List</a><br>
 		<a href="details.jsp">Know-Your-Tax-Liability</a><br>
 		<a href="TaxSlabServlet">Read-Tax-Slabs</a><br>

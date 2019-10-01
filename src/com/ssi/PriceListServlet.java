@@ -33,13 +33,9 @@ public class PriceListServlet extends HttpServlet {
 	}
 	public void init() {
 		ServletContext context = getServletContext();
-		String drivername = context.getInitParameter("driver-name");
-		String connectionURL = context.getInitParameter("connection-url");
-		String username = context.getInitParameter("username");
-		String password = context.getInitParameter("password");
 		try {
-		Class.forName(drivername);
-		con = DriverManager.getConnection(connectionURL, username, password);
+		
+		con = (Connection) context.getAttribute("connection");
 		String sql = "select pname,price from prodinfo";
 		ps = con.prepareStatement(sql);
 		}catch(Exception e) {
